@@ -11,8 +11,8 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        name: "Calorie Calculator",
-        short_name: "Calories",
+        name: "Mealsum",
+        short_name: "Mealsum",
         description: "Calorie totals from your own food labels.",
         display: "standalone",
         orientation: "portrait",

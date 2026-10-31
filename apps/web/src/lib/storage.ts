@@ -118,7 +118,7 @@ export function exportFoods(foods: FoodItem[]): void {
   const link = document.createElement("a")
 
   link.href = url
-  link.download = `calories-${new Date().toISOString().slice(0, 10)}.json`
+  link.download = `mealsum-${new Date().toISOString().slice(0, 10)}.json`
   link.click()
 
   URL.revokeObjectURL(url)
@@ -136,7 +136,7 @@ export function parseImport(text: string): ImportResult {
   }
 
   if (typeof data !== "object" || data === null) {
-    return { ok: false, error: "That file isn't a Calorie Calculator export." }
+    return { ok: false, error: "That file isn't a Mealsum export." }
   }
 
   const { version, foods } = data as Record<string, unknown>
