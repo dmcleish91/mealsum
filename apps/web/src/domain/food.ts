@@ -17,7 +17,7 @@ export interface MealEntry {
 }
 
 export const UNITS = {
-  mass: { g: 1, kg: 1000, oz: 28.3495, lb: 453.592 },
+  mass: { g: 1, oz: 28.3495 },
   volume: {
     ml: 1,
     l: 1000,
