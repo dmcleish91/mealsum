@@ -9,6 +9,7 @@ import {
 } from "@workspace/ui/components/tabs"
 
 import { BackupButtons } from "@/components/backup-buttons"
+import { BackupNotice } from "@/components/backup-notice"
 import { FoodsTab } from "@/components/foods-tab"
 import { MealTab } from "@/components/meal-tab"
 import { useAppState } from "@/hooks/use-app-state"
@@ -77,6 +78,8 @@ export function App() {
           Foods
         </TabsTrigger>
       </TabsList>
+
+      <BackupNotice />
     </Tabs>
   )
 }

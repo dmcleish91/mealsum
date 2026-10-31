@@ -5,8 +5,6 @@ import { Button } from "@workspace/ui/components/button"
 import { Input } from "@workspace/ui/components/input"
 import { Label } from "@workspace/ui/components/label"
 import {
-  Sheet,
-  SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
@@ -16,6 +14,7 @@ import {
   ToggleGroupItem,
 } from "@workspace/ui/components/toggle-group"
 
+import { BottomSheet } from "@/components/bottom-sheet"
 import { UnitPicker } from "@/components/unit-picker"
 import type { FoodDraft } from "@/hooks/use-app-state"
 import {
@@ -46,19 +45,14 @@ export function FoodSheet({
   onDelete,
 }: FoodSheetProps) {
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent
-        side="bottom"
-        className="max-h-[90dvh] gap-0 overflow-y-auto rounded-t-3xl pb-[max(1.5rem,env(safe-area-inset-bottom))]"
-      >
-        <FoodForm
-          food={food}
-          onSave={onSave}
-          onDelete={onDelete}
-          onDone={() => onOpenChange(false)}
-        />
-      </SheetContent>
-    </Sheet>
+    <BottomSheet open={open} onOpenChange={onOpenChange}>
+      <FoodForm
+        food={food}
+        onSave={onSave}
+        onDelete={onDelete}
+        onDone={() => onOpenChange(false)}
+      />
+    </BottomSheet>
   )
 }
 

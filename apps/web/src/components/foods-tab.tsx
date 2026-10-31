@@ -90,9 +90,6 @@ export function FoodsTab({
           New Food
           <PlusIcon />
         </Button>
-        <p className="text-center text-xs text-muted-foreground">
-          Browser storage isn’t permanent. Export a backup now and then.
-        </p>
         {importError && (
           <p className="text-sm text-destructive">{importError}</p>
         )}

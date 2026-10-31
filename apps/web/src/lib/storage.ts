@@ -8,6 +8,7 @@ import {
 } from "@/domain/food"
 
 const KEY = "calorie:v1"
+const NOTICE_KEY = "calorie:backup-notice-seen"
 
 const EXPORT_VERSION = 1
 
@@ -84,6 +85,23 @@ export function load(): AppData {
     return { foods, entries }
   } catch {
     return EMPTY
+  }
+}
+
+export function hasSeenBackupNotice(): boolean {
+  try {
+    return localStorage.getItem(NOTICE_KEY) === "1"
+  } catch {
+    return false
+  }
+}
+
+export function markBackupNoticeSeen(): boolean {
+  try {
+    localStorage.setItem(NOTICE_KEY, "1")
+    return true
+  } catch {
+    return false
   }
 }
 

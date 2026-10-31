@@ -5,13 +5,12 @@ import { Button } from "@workspace/ui/components/button"
 import { Input } from "@workspace/ui/components/input"
 import { Label } from "@workspace/ui/components/label"
 import {
-  Sheet,
-  SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
 } from "@workspace/ui/components/sheet"
 
+import { BottomSheet } from "@/components/bottom-sheet"
 import { UnitPicker } from "@/components/unit-picker"
 import {
   entryCalories,
@@ -36,18 +35,13 @@ export function AddEntrySheet({
   onAdd,
 }: AddEntrySheetProps) {
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent
-        side="bottom"
-        className="max-h-[85dvh] gap-0 overflow-y-auto rounded-t-3xl pb-[max(1.5rem,env(safe-area-inset-bottom))]"
-      >
-        <EntryForm
-          foods={foods}
-          onAdd={onAdd}
-          onDone={() => onOpenChange(false)}
-        />
-      </SheetContent>
-    </Sheet>
+    <BottomSheet open={open} onOpenChange={onOpenChange}>
+      <EntryForm
+        foods={foods}
+        onAdd={onAdd}
+        onDone={() => onOpenChange(false)}
+      />
+    </BottomSheet>
   )
 }
 
