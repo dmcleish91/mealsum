@@ -34,29 +34,31 @@ export function App() {
     <Tabs
       value={tab}
       onValueChange={(value) => setTab(value as TabValue)}
-      className="mx-auto flex min-h-dvh max-w-md flex-col gap-0"
+      className="flex min-h-dvh flex-col gap-0"
     >
-      <header className="sticky top-0 z-40 flex items-baseline justify-between border-b border-border bg-background/90 px-4 py-3 backdrop-blur">
-        <h1 className="font-heading text-base font-medium">
-          {tab === "meal" ? "This meal" : "Foods"}
-        </h1>
-        {tab === "meal" ? (
-          <p className="text-2xl font-semibold tabular-nums">
-            {showCalories(total)}
-            <span className="ml-1 text-xs font-normal text-muted-foreground">
-              cal
-            </span>
-          </p>
-        ) : (
-          <BackupButtons
-            foods={state.foods}
-            onImport={state.importFoods}
-            onError={setImportError}
-          />
-        )}
+      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
+        <div className="mx-auto flex max-w-md items-baseline justify-between px-4 py-3">
+          <h1 className="font-heading text-base font-medium">
+            {tab === "meal" ? "This meal" : "Foods"}
+          </h1>
+          {tab === "meal" ? (
+            <p className="text-2xl font-semibold tabular-nums">
+              {showCalories(total)}
+              <span className="ml-1 text-xs font-normal text-muted-foreground">
+                cal
+              </span>
+            </p>
+          ) : (
+            <BackupButtons
+              foods={state.foods}
+              onImport={state.importFoods}
+              onError={setImportError}
+            />
+          )}
+        </div>
       </header>
 
-      <div className="flex flex-1 flex-col pb-[calc(3.5rem+1px+env(safe-area-inset-bottom))]">
+      <div className="mx-auto flex w-full max-w-md flex-1 flex-col pb-[calc(3.5rem+1px+env(safe-area-inset-bottom))]">
         <TabsContent value="meal" className="flex flex-col">
           <MealTab state={state} />
         </TabsContent>
@@ -65,19 +67,21 @@ export function App() {
         </TabsContent>
       </div>
 
-      <TabsList
-        variant="line"
-        className="fixed inset-x-0 bottom-0 z-40 mx-auto h-auto! w-full max-w-md gap-0 rounded-none border-t border-border bg-background/95 p-0 pb-[env(safe-area-inset-bottom)] backdrop-blur"
-      >
-        <TabsTrigger value="meal" className={TAB_TRIGGER}>
-          <UtensilsCrossedIcon />
-          Meal
-        </TabsTrigger>
-        <TabsTrigger value="foods" className={TAB_TRIGGER}>
-          <ListIcon />
-          Foods
-        </TabsTrigger>
-      </TabsList>
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
+        <TabsList
+          variant="line"
+          className="mx-auto flex h-auto! w-full max-w-md gap-0 rounded-none bg-transparent p-0"
+        >
+          <TabsTrigger value="meal" className={TAB_TRIGGER}>
+            <UtensilsCrossedIcon />
+            Meal
+          </TabsTrigger>
+          <TabsTrigger value="foods" className={TAB_TRIGGER}>
+            <ListIcon />
+            Foods
+          </TabsTrigger>
+        </TabsList>
+      </div>
 
       <BackupNotice />
     </Tabs>
